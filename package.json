@@ -1,0 +1,21 @@
+{
+  "name": "octopus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/mrinmoyxb/Octopus.git",
+  "author": "mrinmoyborah <mrinmoyborah26100@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "octopus": "./bin/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.13.6",
+    "chalk": "^5.6.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^14.0.3",
+    "inquirer": "^13.3.0",
+    "lowdb": "^7.0.1",
+    "ora": "^9.3.0"
+  }
+}
