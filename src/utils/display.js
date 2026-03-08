@@ -1,4 +1,4 @@
-import chalk, { colors } from "chalk";
+import chalk from "chalk";
 import ora from "ora";
 
 function colorStatus(status){
@@ -25,6 +25,7 @@ export function createSpinner(method, url){
         DELETE: chalk.red
     }
     const color = methodColor[method] || chalk.white;
+    console.log();
     return ora(`${color.bold(method)} ${chalk.gray(url)}`).start();
 }
 
@@ -35,9 +36,7 @@ export function displayResponse(response, method){
 
     console.log();
     console.log(divider);
-    console.log(
-        ` ${color.bold(method)} ${colorStatus(response.status)} ${chalk.gray(response.statusText)} ${chalk.gray(".")} ${chalk.yellow(response.duration + "ms")}`
-    )
+    console.log(` ${color.bold(method)} ${colorStatus(response.status)} ${chalk.gray(response.statusText)} ${chalk.gray(".")} ${chalk.yellow(response.duration + "ms")} `)
     console.log(divider);
 
     if(response.data && Object.keys(response.data).length > 0){

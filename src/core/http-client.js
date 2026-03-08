@@ -1,5 +1,5 @@
 import axios from "axios";
-import { buildConfig, parseBody, handleAxiosError } from "../utils/parser";
+import { buildConfig, parseBody, handleAxiosError } from "../utils/parser.js";
 
 export async function sendGET(url, options = {}){
     const config = buildConfig(options)
