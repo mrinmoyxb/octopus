@@ -60,7 +60,7 @@ export function displayError(error){
 
     console.log();
     console.log(divider);
-    console.log(` ${chalk.red.bold("✖ Request Failed")}`);
+    console.log(` ${chalk.red.bold(" ❌ Request Failed ")}`);
     console.log(divider);
 
     if(error.response){
