@@ -22,7 +22,9 @@ export function createSpinner(method, url){
     const methodColor = {
         GET: chalk.green,
         POST: chalk.blue,
-        DELETE: chalk.red
+        DELETE: chalk.red,
+        PUT: chalk.yellow,
+        PATCH: chalk.magenta
     }
     const color = methodColor[method] || chalk.white;
     console.log();
@@ -31,7 +33,7 @@ export function createSpinner(method, url){
 
 export function displayResponse(response, method){
     const divider = chalk.gray("-".repeat(52))
-    const methodColor = { GET: chalk.green, POST: chalk.blue, DELETE: chalk.red }
+    const methodColor = { GET: chalk.green, POST: chalk.blue, DELETE: chalk.red, PUT: chalk.yellow, PATCH: chalk.magenta }
     const color = methodColor[method] || chalk.white;
 
     console.log();

@@ -21,3 +21,36 @@ export async function sendPOST(url, options = {}){
         handleAxiosError(error)
     }
 }
+
+export async function sendDELETE(url, options = {}){
+    const config = buildConfig(options);
+    const body = parseBody(options.body);
+    try{
+        const response = await axios.delete(url, {...config, data: body});
+        return response;
+    }catch(error){
+        handleAxiosError(error);
+    }
+}
+
+export async function sendPATCH(url, options = {}){
+    const config = buildConfig(options);
+    const body = parseBody(options.body);
+    try{
+        const response = await axios.patch(url, body, config);
+        return response;
+    }catch(error){
+        handleAxiosError(error);
+    }
+}
+
+export async function sendPUT(url, options = {}){
+    const config = buildConfig(options);
+    const body = parseBody(options.body);
+    try{
+        const response = await axios.put(url, body, config);
+        return response;
+    }catch(error){
+        handleAxiosError(error);
+    }
+}
