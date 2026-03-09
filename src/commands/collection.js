@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { db, initDB } from "../storage/db.js";
+import { db, initDB } from "../storage/requests.db.js";
 import { sendGET, sendPOST, sendPATCH, sendPUT, sendDELETE } from "../core/http-client.js";
 import { displayResponse, displayError, createSpinner } from "../utils/display.js";
 

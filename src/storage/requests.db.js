@@ -1,3 +1,4 @@
+import { Low } from "lowdb";
 import { JSONFile } from 'lowdb/node';
 import { join } from "path";
 import { cwd } from "process";

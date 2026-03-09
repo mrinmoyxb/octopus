@@ -4,6 +4,7 @@ import { Command } from "commander";
 import { deleteCommand, getCommand, patchCommand, postCommand, putCommand } from "../src/commands/request.js";
 import { showBanner } from "../src/utils/banner.js";
 import { createRequire } from "module";
+import { listCommand, runCommand, saveCommand } from "../src/commands/collection.js";
 
 const require = createRequire(import.meta.url);
 const { version } = require("../package.json");
@@ -59,5 +60,26 @@ program
     .option('-H, --header <header...>', 'Custom header')
     .option('-t, --token <token>',      'Bearer token shorthand')
     .action(patchCommand)
+
+program
+    .command("save <name>")
+    .description('Save a request to your collection')
+    .requiredOption('-m, --method <method>', 'HTTP method: GET, POST, PUT, PATCH, DELETE')
+    .requiredOption('-u, --url <url>',       'Request URL')
+    .option('-b, --body <json>',             'JSON body')
+    .option('-H, --header <header...>',      'Custom headers')
+    .option('-t, --token <token>',           'Bearer token')
+    .option('-p, --param <param...>',        'Query params')
+    .action(saveCommand)
+
+program
+    .command("run <save>")
+    .description("Run a saved request")
+    .action(runCommand)
+
+program
+    .command("list")
+    .description("Show all saved requests")
+    .action(listCommand)
 
 program.parse(process.argv);
