@@ -37,12 +37,19 @@ export async function saveResponseToLogs(uuid, responseOptions){
     await dbLogs.write();
 }
 
-export async function displayLogs(){
+export async function displayLogs(options = {}){
     await initDBForLogs();
 
-    const logs = dbLogs.data;
+    const logs = Object.values(dbLogs.data);
+    if(options.method){
+        logs = logs.filter(log => log.request.method === options.method.toUpperCase());
+    }
+    if(options.limit){
+        logs = logs.slice(-parseInt(options.limit));
+    }
     if(logs.length === 0){
         console.log(chalk.gray("\n No saved logs yet."));
+        return;
     }
 
     const divider = chalk.gray('-'.repeat(60));
@@ -57,25 +64,34 @@ export async function displayLogs(){
     console.log();
     console.log(divider);
 
-    logs.forEach((log)=>{
-        console.log(chalk.green("Request: "));
-        console.log(chalk.yellow(`timestamp: ${log.request.timestamp}`));
-        console.log(chalk.yellow(`method: ${log.request.method}`));
-        console.log(chalk.yellow(`url: ${log.request.url}`));
-        console.log(chalk.yellow(`params: ${log.request.params}`));
-        console.log(chalk.yellow(`headers: ${log.request.headers}`));
-        console.log(chalk.yellow(`token: ${log.request.token}`));
-        console.log(chalk.yellow(`body: ${log.request.body}`));
+    logs.forEach((log, index)=>{
+        const color = methodColor[log.request.method] || chalk.white;
+        
+        console.log();
+        console.log(divider);
+        console.log(chalk.bold(` #${index + 1}`));
         console.log();
 
-        console.log(chalk.green("Response: "));
-        console.log(chalk.yellow(`timestamp: ${log.response.timestamp}`));
-        console.log(chalk.yellow(`method: ${log.request.method}`));
-        console.log(chalk.yellow(`url: ${log.request.url}`));
-        console.log(chalk.yellow(`params: ${log.request.params}`));
-        console.log(chalk.yellow(`headers: ${log.request.headers}`));
-        console.log(chalk.yellow(`token: ${log.request.token}`));
-        console.log(chalk.yellow(`body: ${log.request.body}`));
+        console.log(chalk.bold('  Request:'))
+        console.log(`    method:    ${color.bold(log.request.method)}`)
+        console.log(`    url:       ${chalk.white(log.request.url)}`)
+        console.log(`    timestamp: ${chalk.gray(new Date(log.request.timestamp).toLocaleString())}`)
+        if (log.request.body)    console.log(`    body:      ${chalk.gray(JSON.stringify(log.request.body))}`)
+        if (log.request.token)   console.log(`    token:     ${chalk.gray(log.request.token)}`)
+
+        console.log()
+
+        if (log.response) {
+            console.log(chalk.bold('  Response:'))
+            console.log(`    status:    ${chalk.green(log.response.status)} ${chalk.gray(log.response.statusText)}`)
+            console.log(`    duration:  ${chalk.yellow(log.response.duration + 'ms')}`)
+            console.log(`    timestamp: ${chalk.gray(new Date(log.response.timestamp).toLocaleString())}`)
+        } else {
+            console.log(chalk.red('  Response:  (request failed — no response received)'))
+        }
     })
 
+    console.log();
+    console.log(divider);
+    console.log(chalk.gray(`\n  ${logs.length} log(s) total\n`));
 }

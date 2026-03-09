@@ -1,6 +1,8 @@
 import { sendDELETE, sendGET, sendPATCH, sendPOST } from "../core/http-client.js";
 import { createSpinner, displayError, displayResponse } from "../utils/display.js";
 import { saveRequestToLogs, saveResponseToLogs } from "./logs.js";
+import { resolveVariables } from "../utils/parser.js";
+import { getActiveVariables } from "./env.js";
 
 async function withTimer(requestFn){
     const start = Date.now();
@@ -10,6 +12,10 @@ async function withTimer(requestFn){
 }
 
 export async function getCommand(url, options){
+    const variables = await getActiveVariables();
+    const resolvedURL = resolveVariables(url, variables);
+    if(options.token) options.token = resolveVariables(options.token, variables);
+
     const spinner = createSpinner("GET", url);
     try{
         const uuid = await saveRequestToLogs({method: "GET", url, ...options})
@@ -25,6 +31,10 @@ export async function getCommand(url, options){
 }
 
 export async function postCommand(url, options){
+     const variables = await getActiveVariables();
+    const resolvedURL = resolveVariables(url, variables);
+    if(options.token) options.token = resolveVariables(options.token, variables);
+
     const spinner = createSpinner("POST", url);
     try{
         const uuid = await saveRequestToLogs({method: "POST", url, ...options})
@@ -40,6 +50,10 @@ export async function postCommand(url, options){
 }
 
 export async function deleteCommand(url, options){
+    const variables = await getActiveVariables();
+    const resolvedURL = resolveVariables(url, variables);
+    if(options.token) options.token = resolveVariables(options.token, variables);
+
     const spinner = createSpinner("DELETE", url);
     try{
         const uuid = await saveRequestToLogs({method: "DELETE", url, ...options})
@@ -55,6 +69,10 @@ export async function deleteCommand(url, options){
 }
 
 export async function patchCommand(url, options){
+    const variables = await getActiveVariables();
+    const resolvedURL = resolveVariables(url, variables);
+    if(options.token) options.token = resolveVariables(options.token, variables);
+
     const spinner = createSpinner("PATCH", url);
     try{
         const uuid = await saveRequestToLogs({method: "PATCH", url, ...options})
@@ -70,6 +88,10 @@ export async function patchCommand(url, options){
 }
 
 export async function putCommand(url, options){
+    const variables = await getActiveVariables();
+    const resolvedURL = resolveVariables(url, variables);
+    if(options.token) options.token = resolveVariables(options.token, variables);
+
     const spinner = createSpinner("PUT", url);
     try{
         const uuid = await saveRequestToLogs({method: "PUT", url, ...options})

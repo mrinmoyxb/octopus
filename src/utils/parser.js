@@ -44,3 +44,18 @@ export function handleAxiosError(error) {
     throw new Error(error.message)
   }
 }
+
+export function resolveVariables(text, variables){
+    if(!text){
+        return text;
+    }
+
+    return text.replace(/\{\{(\w+)\}\}/g, (match, key)=>{
+        if(variables[key] !== undefined){
+            return variables[key];
+        }
+
+        console.warn(`  ⚠️ Warning: {{${key}}} not found in active environment`)
+        return match
+    })
+}

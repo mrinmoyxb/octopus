@@ -5,6 +5,8 @@ import { deleteCommand, getCommand, patchCommand, postCommand, putCommand } from
 import { showBanner } from "../src/utils/banner.js";
 import { createRequire } from "module";
 import { listCommand, runCommand, saveCommand } from "../src/commands/collection.js";
+import { displayLogs } from "../src/commands/logs.js";
+import { envSet, envList, envUse } from "../src/commands/env.js";
 
 const require = createRequire(import.meta.url);
 const { version } = require("../package.json");
@@ -81,5 +83,32 @@ program
     .command("list")
     .description("Show all saved requests")
     .action(listCommand)
+
+program
+    .command('history')
+    .description('Show all past requests and responses')
+    .option('-n, --limit <number>',        'Show last N entries e.g. --limit 10')
+    .option('-m, --method <method>',       'Filter by method e.g. --method GET')
+    .action(displayLogs)
+
+const env = program
+                .command('env')
+                .description('Manage environments and variables')
+
+env
+    .command('set <key> <value>')
+    .description('Set a variable in an environment')
+    .option('-e, --env <name>', 'Environment name', 'default')
+    .action(envSet)
+
+env
+    .command('use <name>')
+    .description('Switch the active environment')
+    .action(envUse)
+
+env
+    .command('list')
+    .description('Show all environments and variables')
+    .action(envList)
 
 program.parse(process.argv);
