@@ -36,7 +36,7 @@ export async function envUse(name){
     await dbEnv.write()
 
     console.log()
-    console.log(chalk.green(`  ✔ Switched to [${chalk.bold(name)}]`))
+    console.log(chalk.green(`  ✅ Switched to [${chalk.bold(name)}]`))
     console.log(chalk.gray(`  All requests will now use "${name}" variables\n`))
 }
 
@@ -79,6 +79,31 @@ export async function getActiveVariables(){
 
     const { active, environments } = dbEnv.data;
     if(!active || !environments[active]) return {};
-    
+
     return environments[active];
+}
+
+export async function envDelete(options){
+    await initDBForEnv();
+
+    if(options.all){
+        dbEnv.data.active = null;
+        dbEnv.data.environments = {};
+        await dbEnv.write();
+        console.log(chalk.green(`  ✅ Deleted all environments`));
+    }else{
+        if(!dbEnv.data.environments[options.env]){
+            console.log(chalk.gray('\n  No environments yet.'));
+            console.log(chalk.gray('  Create one: octopus env set base_url http://localhost:3000 --env development\n'));
+            return;
+        }
+
+        if(dbEnv.data.active === options.env){
+            dbEnv.data.active = null;
+        }
+
+        delete dbEnv.data.environments[options.env];
+        await dbEnv.write();
+        console.log(chalk.green(`  ✅ Deleted env [${chalk.bold(options.env)}]`));
+    }
 }

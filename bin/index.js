@@ -6,7 +6,7 @@ import { showBanner } from "../src/utils/banner.js";
 import { createRequire } from "module";
 import { listCommand, runCommand, saveCommand } from "../src/commands/collection.js";
 import { displayLogs } from "../src/commands/logs.js";
-import { envSet, envList, envUse } from "../src/commands/env.js";
+import { envSet, envList, envUse, envDelete } from "../src/commands/env.js";
 
 const require = createRequire(import.meta.url);
 const { version } = require("../package.json");
@@ -110,5 +110,12 @@ env
     .command('list')
     .description('Show all environments and variables')
     .action(envList)
+
+env
+    .command('delete')
+    .description('Delete a variable or entire environment')
+    .option('-e, --env <name>',  'Environment to delete')
+    .option('-a, --all',         'Delete all environments')
+    .action(envDelete)
 
 program.parse(process.argv);
