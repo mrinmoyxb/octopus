@@ -1,21 +1,20 @@
 <div align="center">
 
-```
-                     ██████╗  ██████╗████████╗ ██████╗ ██████╗ ██╗   ██╗███████╗
-                    ██╔═══██╗██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██║   ██║██╔════╝
-                    ██║   ██║██║        ██║   ██║   ██║██████╔╝██║   ██║███████╗
-                    ██║   ██║██║        ██║   ██║   ██║██╔═══╝ ██║   ██║╚════██║
-                    ╚██████╔╝╚██████╗   ██║   ╚██████╔╝██║     ╚██████╔╝███████║
-                    ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝ ╚═╝      ╚═════╝ ╚══════╝
+<img width="898" height="228" alt="ascii-art-text" src="https://github.com/user-attachments/assets/779105d4-8965-478f-90c9-31a0f3dd0fd3" />
 
-```
-
-# 🐙 octopus
+<h1> 🐙 octopus</h1>
 
 **The API client for developers who live in the terminal.**
 
-No accounts. No GUI. No nonsense. Just fast, scriptable HTTP requests
-that fit into your existing workflow.
+<p>
+Octopus is an open-source, terminal-based REST API client built with Node.js —<br/>
+designed for developers who prefer speed, simplicity and staying in their workflow.<br/>
+No accounts. No GUI. No nonsense. Just fast, scriptable HTTP requests<br/>
+that fit right into your existing tools.
+</p>
+
+> Octopus is built entirely on **Node.js** and is currently focused on **REST API** testing.
+> WebSocket, GraphQL and gRPC support are planned for future versions.
 
 <br/>
 
@@ -30,16 +29,32 @@ that fit into your existing workflow.
 </div>
 
 ---
+## 🛠️ Tech Stack
+
+</div>
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Runtime** | Node.js 18+ | JavaScript runtime |
+| **HTTP Client** | Axios | Sending HTTP requests |
+| **CLI Framework** | Commander.js | Commands & flags parsing |
+| **Interactivity** | Ora + Chalk | Spinners & colored output |
+| **ASCII Art** | Figlet | Terminal banner |
+| **Storage** | Lowdb (JSON) | Collections, logs, environments |
+
+---
+
+<div align="left">
 
 ## ✨ Why Octopus?
 
-| | Postman | Octopus |
+| | Postman | octopus |
 |---|---|---|
 | Account required | ✅ | ❌ |
 | Opens in terminal | ❌ | ✅ |
 | Pipeable output | ❌ | ✅ |
 | Git-friendly | ❌ | ✅ |
-| Startup time | 5–15 seconds | Instant |
+| Instant startup | ❌ | ✅ |
 | Works in scripts | ❌ | ✅ |
 
 ---
@@ -293,7 +308,7 @@ node bin/index.js get https://jsonplaceholder.typicode.com/posts/1
 
 ## 📄 License
 
-MIT © [Your Name](https://github.com/yourusername)
+MIT © [Mrinmoy Borah](https://github.com/yourusername)
 
 ---
 
@@ -301,6 +316,6 @@ MIT © [Your Name](https://github.com/yourusername)
 
 Made with 🐙 by developers, for developers.
 
-**[⭐ Star on GitHub](https://github.com/yourusername/octopus-cli)** if you find it useful!
+**[⭐ Leave a star on GitHub](https://github.com/yourusername/octopus-cli)** if you find it useful!
 
 </div>
