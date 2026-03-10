@@ -1,6 +1,8 @@
-<div align="center">
+<div align = "center">
 
-<img width="898" height="228" alt="ascii-art-text" src="https://github.com/user-attachments/assets/779105d4-8965-478f-90c9-31a0f3dd0fd3" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mrinmoyxb/octopus/main/assets/banner.png" width="700">
+</p>
 
 <h1> 🐙 octopus</h1>
 
@@ -15,6 +17,10 @@ that fit right into your existing tools.
 
 > Octopus is built entirely on **Node.js** and is currently focused on **REST API** testing.
 > WebSocket, GraphQL and gRPC support are planned for future versions.
+
+```bash
+npm install -g @mrinmoyxb/octopus
+```
 
 <br/>
 
