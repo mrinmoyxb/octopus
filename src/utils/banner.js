@@ -1,7 +1,7 @@
 import figlet from "figlet";
 import chalk from "chalk";
 
-function renderAscii(text, font="ANSI Shadow"){
+async function renderAscii(text, font="ANSI Shadow"){
     return new Promise((resolve, reject)=>{
         figlet.text(text, { font }, (err, result)=>{
             if(err) reject(err);

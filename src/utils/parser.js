@@ -4,7 +4,7 @@ export function buildConfig(options = {}){
         timeout: 10000
     }
 
-    if(options.headers){
+    if(options.headers && Array.isArray(options.headers)){
         options.headers.forEeach((headerString)=>{
             const [key, ...rest] = headerString.split(":");
             config.headers[key.trim()] = rest.join(":").trim();
@@ -15,7 +15,7 @@ export function buildConfig(options = {}){
         config.headers["Authorization"] = `Bearer: ${options.token}`
     }
 
-    if(options.params){
+    if(options.params && Array.isArray(options.headers)){
         config.params = {}
         options.params.forEeach((paramString)=>{
             const [key, value] = paramString.split("=");
@@ -31,7 +31,7 @@ export function parseBody(bodyString){
     try{
         return JSON.parse(bodyString);
     }catch{
-        throw new Error(`Invalid JSON body: ${bodyString}\nTip: use double quotes inside -> {"name":"john"}`)
+        throw new Error(`Invalid JSON body: ${bodyString}\n Tip: use double quotes inside -> {"name":"john"}`)
     }
 }
 

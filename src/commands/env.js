@@ -16,11 +16,11 @@ export async function envSet(key, value, options){
         dbEnv.data.active = envName
     }
 
-    await dbEnv.read();
+    await dbEnv.write();
 
     console.log();
     console.log(chalk.green(`   ✅ Set ${chalk.bold(key)} in [${envName}]`));
-    console.log(chalk.gray(`    ${key} = ${value}\n`));
+    console.log(chalk.gray(`   ${key} = ${value}\n`));
 }
 
 export async function envUse(name){

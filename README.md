@@ -12,7 +12,7 @@
 
 # 🐙 octopus
 
-**The API client for developers who live in the terminal**
+**The API client for developers who live in the terminal.**
 
 No accounts. No GUI. No nonsense. Just fast, scriptable HTTP requests
 that fit into your existing workflow.

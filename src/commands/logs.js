@@ -10,7 +10,7 @@ export async function saveRequestToLogs(requestOptions){
             method: requestOptions.method.toUpperCase(),
             url: requestOptions.url,
             params: requestOptions.params || [],
-            headers: requestOptions.header || [],
+            headers: requestOptions.headers || [],
             token: requestOptions.token || null,
             body: requestOptions.body || null
         },
@@ -26,7 +26,7 @@ export async function saveResponseToLogs(uuid, responseOptions){
 
     if(!dbLogs.data[uuid]) return;
 
-    dbLogs.data[uuid].reponse = {
+    dbLogs.data[uuid].response = {
         timestamp: Date.now(),
         status: responseOptions.status,
         statusText: responseOptions.statusText,
@@ -40,7 +40,7 @@ export async function saveResponseToLogs(uuid, responseOptions){
 export async function displayLogs(options = {}){
     await initDBForLogs();
 
-    const logs = Object.values(dbLogs.data);
+    let logs = Object.values(dbLogs.data);
     if(options.method){
         logs = logs.filter(log => log.request.method === options.method.toUpperCase());
     }

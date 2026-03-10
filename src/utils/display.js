@@ -2,9 +2,9 @@ import chalk from "chalk";
 import ora from "ora";
 
 function colorStatus(status){
-    if(status>=200 && status<300) return chalk.bgGreen.black.bold(`${status}`);
-    if(status>=300 && status<400) return chalk.bgCyan.black.bold(`${status}`);
-    if(status>=400 && status<500) return chalk.bgYellow.black.bold(`${status}`);
+    if(status>=200 && status<300) return chalk.bgGreenBright.blue.bold(` ${status} `);
+    if(status>=300 && status<400) return chalk.bgCyan.black.bold(` ${status} `);
+    if(status>=400 && status<500) return chalk.bgYellowBright.blue.bold(` ${status} `);
     return chalk.bgRed.white.bold(`${status}`);
 }
 
@@ -32,7 +32,7 @@ export function createSpinner(method, url){
 }
 
 export function displayResponse(response, method){
-    const divider = chalk.gray("-".repeat(52))
+    const divider = chalk.gray("-".repeat(65));
     const methodColor = { GET: chalk.green, POST: chalk.blue, DELETE: chalk.red, PUT: chalk.yellow, PATCH: chalk.magenta }
     const color = methodColor[method] || chalk.white;
 

@@ -15,7 +15,7 @@ export async function saveCommand(name, options){
     await initDB();
     const exists = db.data.collections.find(r => r.name === name);
     if(exists){
-        console.log(chalk.yellow(`\n ⚠️ A request named "${name}" already exists. `));
+        console.log(chalk.yellow(`\n ⚠️  A request named "${name}" already exists. `));
         console.log(chalk.gray(` Use a different name or delete it first with: octopus delete-saved "${name}" `));
         return;
     }
@@ -100,7 +100,7 @@ export async function listCommand(){
     console.log();
     console.log(divider);
     console.log(
-        ` ${chalk.bold("NAME").padEnd(20)} ${chalk.bold("METHOD").padEnd(8)} ${chalk.bold("URL")}`
+        ` ${chalk.bold("NAME").padEnd(20)}              ${chalk.bold("METHOD").padEnd(8)} ${chalk.bold("URL")}`
     )
     console.log(divider);
 
