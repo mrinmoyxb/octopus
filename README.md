@@ -307,8 +307,9 @@ node bin/index.js get https://jsonplaceholder.typicode.com/posts/1
 ---
 
 ## 📄 License
-
-MIT © [Mrinmoy Borah](https://github.com/yourusername)
+[![license](https://img.shields.io/badge/license-GPL%20v3-3bc9db?labelColor=1a1a2e&style=for-the-badge)](LICENSE)
+<br/>
+GPL v3 © [Mrinmoy Borah](https://github.com/yourusername)
 
 ---
 
