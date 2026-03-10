@@ -1,5 +1,5 @@
 {
-  "name": "octopus",
+  "name": "@mrinmoyxb/octopus",
   "version": "1.0.0",
   "description": "A CLI tool for testing REST APIs",
   "bin": {
