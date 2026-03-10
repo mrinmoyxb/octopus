@@ -62,7 +62,7 @@ that fit right into your existing tools.
 ## 📦 Installation
 
 ```bash
-npm install -g octopus-cli
+npm install -g @mrinmoyxb/octopus
 ```
 
 Verify it works:
