@@ -315,7 +315,7 @@ node bin/index.js get https://jsonplaceholder.typicode.com/posts/1
 ## 📄 License
 [![license](https://img.shields.io/badge/license-GPL%20v3-3bc9db?labelColor=1a1a2e&style=for-the-badge)](LICENSE)
 <br/>
-GPL v3 © [Mrinmoy Borah](https://github.com/yourusername)
+GPL v3 © [Mrinmoy Borah](https://github.com/mrinmoyxb)
 
 ---
 
@@ -323,6 +323,6 @@ GPL v3 © [Mrinmoy Borah](https://github.com/yourusername)
 
 Made with 🐙 by developers, for developers.
 
-**[⭐ Leave a star on GitHub](https://github.com/yourusername/octopus-cli)** if you find it useful!
+**[⭐ Leave a star on GitHub](https://github.com/mrinmoyxb/octopus)** if you find it useful!
 
 </div>
